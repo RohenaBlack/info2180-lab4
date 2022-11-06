@@ -9,7 +9,21 @@
     <script src="app.js"></script>
   </head>
   <body>
-    <h1>Avengers Character Search</h1>
-    <button type="button" id="searchBtn" onclick="showSuperHeroes()">Search</button>
+    <div class="heading">
+        <h1> AVENGERS CHARACTER SEARCH </h1>
+    </div>
+    
+    <div class="section">
+        <div class="container">
+            <h3>Search by Full Name or Alias</h3>
+            <div class="searchContainer">
+                <input id="searchBox" type="text" placeholder="e.g. Captain America or Steve Rogers" name="search">
+                <button type="button" id="searchBtn" onclick="showSuperHeroes()">Search</button>
+            </div>
+            <h2>RESULT</h2>
+            <hr>
+            <div id="result"></div>
+        </div>
+    </div>
   </body>
 </html>
