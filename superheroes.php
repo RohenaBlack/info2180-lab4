@@ -63,10 +63,49 @@ $superheroes = [
   ], 
 ];
 
+
+$avengerChar = htmlspecialchars($_GET['query']); 
+    $alias = "";
+    $name = "";
+    $Herofound = false;
+
+    /* This is checking if the user has entered a query or not. If they have not entered a query, it
+    will display all the superheroes. */
+    if($avengerChar==="" || $avengerChar===null){
+        echo "<ul>";
+        foreach ($superheroes as $superhero){
+            echo "<li>". $superhero['alias']. "</li>";
+        }
+        echo "</ul>";
+        return;
+    }
+
+    /* If the hero searched for is present in the array then, their alias, name and biography is displayed */
+    foreach ($superheroes as $superhero){
+        $name = strcmp($superhero['name'], $avengerChar);
+        $alias = strcmp($superhero['alias'], $avengerChar);
+        if ($name==0 or $alias==0){
+            $Herofound = true;
+            echo "<h3>". $superhero['alias']. "</h3>";
+            echo "<h4>". "A.K.A ". $superhero['name']. "</h4>";
+            echo "<p>". $superhero['biography']. "</p>";
+        }
+    }
+
+
+    /* This is checking if the hero searched for is present in the array. If the hero is not present in
+    the array, then it will display the message "SUPERHERO NOT FOUND". */
+    if(!$Herofound){
+        echo '<h3 id="notFound">' ."SUPERHERO NOT FOUND". '</h3>';
+    }
+
 ?>
 
-<ul>
+
+
+<!-- <ul>
 <?php foreach ($superheroes as $superhero): ?>
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
-</ul>
+</ul> -->
+
